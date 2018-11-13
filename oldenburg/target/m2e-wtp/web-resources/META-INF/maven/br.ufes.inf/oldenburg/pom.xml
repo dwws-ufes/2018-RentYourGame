@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>br.ufes.inf</groupId>
+  <artifactId>oldenburg</artifactId>
+  <packaging>war</packaging>
+  <version>1.0</version>
+  <name>oldenburg Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+  	<dependency>
+    	<groupId>com.github.adminfaces</groupId>
+    	<artifactId>admin-template</artifactId>
+    	<version>1.0.0-RC18</version>
+	</dependency>
+	<dependency>
+    	<groupId>br.ufes.inf.nemo</groupId>
+    	<artifactId>jbutler-wp</artifactId>
+    	<version>1.2.7</version>
+	</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+  	<plugins>
+    <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+            <source>9</source>
+            <target>9</target>
+        </configuration>
+    </plugin>
+	</plugins>
+    <finalName>oldenburg</finalName>
+  </build>
+  <repositories>
+	<repository>
+		<releases>
+			<enabled>true</enabled>
+			<updatePolicy>always</updatePolicy>
+			<checksumPolicy>fail</checksumPolicy>
+		</releases>
+		<id>br.ufes.inf.nemo</id>
+		<name>Nemo Maven Repository</name>
+		<url>http://dev.nemo.inf.ufes.br/maven2</url>
+		<layout>default</layout>
+	</repository>
+</repositories>
+</project>

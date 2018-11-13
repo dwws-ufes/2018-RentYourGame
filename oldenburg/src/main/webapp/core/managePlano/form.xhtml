@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:adm="http://github.com/adminfaces"
+    template="/WEB-INF/templates/template.xhtml">
+    
+    
+    <ui:define name="title">
+	<h:outputText value="#{msgsCore['managePlano.title.create']}"
+		rendered="#{(! managePlanoController.readOnly) and (managePlanoController.selectedEntity.id == null)}" />
+	<h:outputText value="#{msgsCore['managePlano.title.update']}"
+		rendered="#{(! managePlanoController.readOnly) and (managePlanoController.selectedEntity.id != null)}" />
+	<h:outputText value="#{msgsCore['managePlano.title.retrieve']}" rendered="#{managePlanoController.readOnly}" />
+</ui:define>
+
+<ui:define name="description">
+	<h:outputText value="#{msgsCore['managePlano.title.create.description']}"
+		rendered="#{(! managePlanoController.readOnly) and (managePlanoController.selectedEntity.id == null)}" />
+	<h:outputText value="#{msgsCore['managePlano.title.update.description']}"
+		rendered="#{(! managePlanoController.readOnly) and (managePlanoController.selectedEntity.id != null)}" />
+	<h:outputText value="#{msgsCore['managePlano.title.retrieve.description']}" rendered="#{managePlanoController.readOnly}" />
+</ui:define>
+
+<ui:define name="body">
+	<h:form id="entitiesForm">
+		<!--
+		<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
+			<p:outputLabel for="loginField" value="#{msgsCore['manageUsuario.field.login']} "  />
+			<p:inputText id="loginField" value="#{managePlanoController.selectedEntity.login}" style="width: 100%;" />
+		</p:panelGrid>-->
+
+		<!--"#{msgsCore['manageUsuario.field.login']} " "#{request.remoteUser}"
+		<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
+			<p:outputLabel for="categoriaPlanoField" value="#{msgsCore['managePlano.field.categoriaPlano']} " />
+			<p:inputText id="categoriaPlanoField" value="#{managePlanoController.selectedEntity.categoriaPlano}" style="width: 100%;" />
+		</p:panelGrid>
+		<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
+			<p:outputLabel for="formaPagamentoField" value="#{msgsCore['managePlano.field.formaPagamento']} " />
+			<p:inputText id="formaPagamentoField" value="#{managePlanoController.selectedEntity.formaPagamento}" style="width: 100%;" />
+		</p:panelGrid>#{msgsCore['managePlano.field.categoriaPlano']}    -->
+		<!--
+		 <p:selectOneMenu id="categoriaPlanoField" value="#{msgsCore['managePlano.field.categoriaPlano']} " style="width:275px">
+            <f:selectItem itemLabel="Selecione Categoria do Plano" itemValue="" />
+            <f:selectItem itemLabel="Mensal" itemValue="#{managePlanoController.selectedEntity.categoriaPlano.MENSAL}" />
+            <f:selectItem itemLabel="Semestral" itemValue="#{managePlanoController.selectedEntity.categoriaPlano.SEMESTRAL}" />
+            <f:selectItem itemLabel="Anual" itemValue="#{managePlanoController.selectedEntity.categoriaPlano.ANUAL}" />
+        </p:selectOneMenu>
+        
+        <p:selectOneMenu id="formaPagamentoField" value="#{msgsCore['managePlano.field.formaPagamento']} " style="width:275px">
+            <f:selectItem itemLabel="Selecione Forma de Pagamento" itemValue="" />
+            <f:selectItem itemLabel="Credito" itemValue="#{managePlanoController.selectedEntity.formaPagamento.CREDITO}" />
+            <f:selectItem itemLabel="Debito" itemValue="#{managePlanoController.selectedEntity.formaPagamento.DEBITO}" />
+            <f:selectItem itemLabel="Boleto" itemValue="#{managePlanoController.selectedEntity.formaPagamento.BOLETO}" />
+        </p:selectOneMenu> -->
+        
+        <h:selectOneMenu value="#{managePlanoController.selectedEntity.categoriaPlano}" style="width:210px">
+        	<f:selectItem itemLabel="Selecione Categoria do Plano" />
+    		<f:selectItems value="#{managePlanoController.selectedEntity.getCategorias()}" />
+		</h:selectOneMenu>
+		
+        <h:selectOneMenu binding="#{input1}" value="#{managePlanoController.selectedEntity.formaPagamento}" style="width:210px">
+        	<f:selectItem itemLabel="Selecione Forma de pagamento" />
+    		<f:selectItems value="#{managePlanoController.selectedEntity.getFormas()}" />
+		</h:selectOneMenu>
+		
+		<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
+			
+			<p:outputLabel for="dataVencimentoField" value="#{msgsCore['managePlano.field.dataVencimento']}" />
+			<p:calendar id="dataVencimentoField" value="#{managePlanoController.selectedEntity.dataVencimento}" showOn="button"
+				pattern="dd/MM/yyyy" mask="true" style="width: 100%;" />
+			
+		</p:panelGrid>
+	
+		<!--<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
+			binding="#{input1}"  value="#{managePlanoController.selectedEntity.formaPagamento}"
+			<p:outputLabel for="dataVencimentoField" value="#{msgsCore['managePlano.field.dataVencimento']}" />
+			<p:calendar id="dataVencimentoField" value="#{managePlanoController.selectedEntity.dataVencimento}" showOn="button"
+				pattern="dd/MM/yyyy" mask="true" style="width: 100%;" />
+			
+		</p:panelGrid>-->
+		
+		
+
+
+
+		<p:commandButton id="cancelButton" value="#{msgs['jbutler.crud.button.cancel']}" icon="fa fa-close"
+			action="#{managePlanoController.list}" immediate="true" rendered="#{! managePlanoController.readOnly}" />
+		<p:commandButton id="saveButton" value="#{msgs['jbutler.crud.button.save']}" icon="fa fa-save" action="#{managePlanoController.save}"
+			rendered="#{! managePlanoController.readOnly}" />
+		<p:defaultCommand target="saveButton" />
+		<p:commandButton id="backButton" value="#{msgs['jbutler.crud.button.back']}" icon="fa fa-arrow-circle-left"
+			action="#{managePlanoController.list}" immediate="true" rendered="#{managePlanoController.readOnly}" />
+	</h:form>
+</ui:define>
+</ui:composition>

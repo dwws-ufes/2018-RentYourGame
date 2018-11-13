@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:adm="http://github.com/adminfaces"
+    template="/WEB-INF/templates/template.xhtml">
+    
+    
+    <ui:define name="title">
+	<h:outputText value="#{msgsCore['manageEmprestimo.title.create']}"
+		rendered="#{(! manageEmprestimoController.readOnly) and (manageEmprestimoController.selectedEntity.id == null)}" />
+	<h:outputText value="#{msgsCore['manageEmprestimo.title.update']}"
+		rendered="#{(! manageEmprestimoController.readOnly) and (manageEmprestimoController.selectedEntity.id != null)}" />
+	<h:outputText value="#{msgsCore['manageEmprestimo.title.retrieve']}" rendered="#{manageEmprestimoController.readOnly}" />
+</ui:define>
+
+<ui:define name="description">
+	<h:outputText value="#{msgsCore['manageEmprestimo.title.create.description']}"
+		rendered="#{(! manageEmprestimoController.readOnly) and (manageEmprestimoController.selectedEntity.id == null)}" />
+	<h:outputText value="#{msgsCore['manageEmprestimo.title.update.description']}"
+		rendered="#{(! manageEmprestimoController.readOnly) and (manageEmprestimoController.selectedEntity.id != null)}" />
+	<h:outputText value="#{msgsCore['manageEmprestimo.title.retrieve.description']}" rendered="#{manageEmprestimoController.readOnly}" />
+</ui:define>
+
+<ui:define name="body">
+	<h:form id="entitiesForm">
+		<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
+			<p:outputLabel for="produtoDisponivelField" value="#{msgsCore['manageEmprestimo.field.produtoDisponivel']} " />
+			<p:inputText id="produtoDisponivelField" value="#{manageEmprestimoController.selectedEntity.produtoDisponivel}" style="width: 100%;" />
+		</p:panelGrid>
+		<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
+			<p:outputLabel for="filaEsperaField" value="#{msgsCore['manageEmprestimo.field.filaEspera']} " />
+			<p:inputText id="filaEsperaField" value="#{manageEmprestimoController.selectedEntity.filaEspera}" style="width: 100%;" />
+		</p:panelGrid>
+		
+		<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
+			
+			<p:outputLabel for="dataEmprestimoField" value="#{msgsCore['manageEmprestimo.field.dataEmprestimo']}" />
+			<p:calendar id="dataEmprestimoField" value="#{manageEmprestimoController.selectedEntity.dataEmprestimo}" showOn="button"
+				pattern="dd/MM/yyyy" mask="true" style="width: 100%;" />
+			
+		</p:panelGrid>
+		
+		
+		<p:commandButton id="cancelButton" value="#{msgs['jbutler.crud.button.cancel']}" icon="fa fa-close"
+			action="#{manageEmprestimoController.list}" immediate="true" rendered="#{! manageEmprestimoController.readOnly}" />
+		<p:commandButton id="saveButton" value="#{msgs['jbutler.crud.button.save']}" icon="fa fa-save" action="#{manageEmprestimoController.save}"
+			rendered="#{! manageEmprestimoController.readOnly}" />
+		<p:defaultCommand target="saveButton" />
+		<p:commandButton id="backButton" value="#{msgs['jbutler.crud.button.back']}" icon="fa fa-arrow-circle-left"
+			action="#{manageEmprestimoController.list}" immediate="true" rendered="#{manageEmprestimoController.readOnly}" />
+	</h:form>
+</ui:define>
+</ui:composition>

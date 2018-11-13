@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui" template="/admin.xhtml">
+
+    <ui:define name="head">
+        <title>RentYourGame</title>
+    </ui:define>
+
+    <ui:define name="logo-lg">
+        RentYourGame
+    </ui:define>
+
+    <ui:define name="logo-mini">
+        RYG
+    </ui:define>
+
+    <ui:define name="menu">
+        <ul class="sidebar-menu">
+            <li><p:link outcome="/index" onclick="clearBreadCrumbs()">
+                    <i class="fa fa-home"></i>
+                    <span>Home</span>
+                </p:link></li>
+ 
+ 
+  
+                
+             
+
+            
+					<li class="header"><h:outputText value="#{msgsCore['core.menu.admin']}" /></li>
+					
+
+	
+		<li><p:link outcome="/core/manageProduto/index" onclick="clearBreadCrumbs()">
+				<i class="fa fa-save"></i>
+				<span><h:outputText value="#{msgsCore['core.menu.admin.manageProduto']}" /></span>
+	</p:link></li>
+	
+	
+<li><p:link outcome="/core/manageUsuario/index" onclick="clearBreadCrumbs()">
+		<i class="fa fa-save"></i>
+		<span><h:outputText value="#{msgsCore['core.menu.admin.manageUsuario']}" /></span>
+	</p:link></li>
+	
+	<li><p:link outcome="/core/managePlano/index" onclick="clearBreadCrumbs()">
+		<i class="fa fa-save"></i>
+		<span><h:outputText value="#{msgsCore['core.menu.admin.managePlano']}" /></span>
+	</p:link></li>
+	
+	<li><p:link outcome="/core/manageEmprestimo/index" onclick="clearBreadCrumbs()">
+		<i class="fa fa-save"></i>
+		<span><h:outputText value="#{msgsCore['core.menu.admin.manageEmprestimo']}" /></span>
+	</p:link></li>
+	
+	<li><p:link outcome="/core/manageDevolucao/index" onclick="clearBreadCrumbs()">
+		<i class="fa fa-save"></i>
+		<span><h:outputText value="#{msgsCore['core.menu.admin.manageDevolucao']}" /></span>
+	</p:link></li>
+	
+
+        </ul>
+    </ui:define>
+
+    <ui:define name="top-menu">
+
+    </ui:define>
+
+
+</ui:composition>
