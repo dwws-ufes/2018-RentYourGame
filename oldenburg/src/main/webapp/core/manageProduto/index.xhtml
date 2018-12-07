@@ -17,10 +17,12 @@
 
 <ui:define name="body">
 	<adm:breadcrumb link="/core/manageProduto/index" title="#{msgsCore['manageProduto.title']}" />
+	<a style="float: right;" href="#{facesContext.externalContext.requestContextPath}/data/games">RDF/XML</a>
 	<h:form id="listingForm">
 		<p:dataTable id="entitiesDataTable" var="entity" value="#{manageProdutoController.lazyEntities}"
 			selection="#{manageProdutoController.selectedEntity}" selectionMode="single" paginator="true"
 			rows="#{manageProdutoController.maxDataTableRowsPerPage}"
+			scrollable="true"
 			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 			rowsPerPageTemplate="#{manageProdutoController.halfMaxDataTableRowsPerPage},#{manageProdutoController.maxDataTableRowsPerPage},#{manageProdutoController.doubleMaxDataTableRowsPerPage}"
 			lazy="true" paginatorPosition="bottom" emptyMessage="#{msgsCore['manageProduto.text.noEntities']}">
@@ -32,6 +34,9 @@
 
 			<p:column headerText="#{msgsCore['manageProduto.field.name']}">
 				<h:outputText value="#{entity.name}" />
+			</p:column>
+			<p:column headerText="Resumo">
+				<h:outputText value="#{entity.resumo}" />
 			</p:column>
 			<p:column headerText="#{msgsCore['manageProduto.field.classificacaoIndicativa']}">
 				<h:outputText value="#{entity.classificacaoIndicativa}" />
@@ -48,12 +53,10 @@
 			<p:column headerText="#{msgsCore['manageProduto.field.legendas']}">
 				<h:outputText value="#{entity.legendas}" />
 			</p:column>
-			<p:column headerText="#{msgsCore['manageProduto.field.multiplayer']}">
+			<p:column headerText="Modo">
 				<h:outputText value="#{entity.multiplayer}" />
 			</p:column>
-			<p:column headerText="#{msgsCore['manageProduto.field.quantidadeEstoque']}">
-				<h:outputText value="#{entity.quantidadeEstoque}" />
-			</p:column>
+
 			
 			
 			
@@ -80,6 +83,9 @@
 					<p:column headerText="#{msgsCore['manageProduto.field.name']}">
 						<h:outputText value="#{entity.name}" />
 					</p:column>
+					<p:column headerText="Resumo">
+						<h:outputText value="#{entity.resumo}" />
+					</p:column>
 					<p:column headerText="#{msgsCore['manageProduto.field.classificacaoIndicativa']}">
 						<h:outputText value="#{entity.classificacaoIndicativa}" />
 					</p:column>		
@@ -97,11 +103,8 @@
 					<p:column headerText="#{msgsCore['manageProduto.field.legendas']}">
 						<h:outputText value="#{entity.legendas}" />
 					</p:column>
-					<p:column headerText="#{msgsCore['manageProduto.field.multiplayer']}">
+					<p:column headerText="Modo">
 						<h:outputText value="#{entity.multiplayer}" />
-					</p:column>
-					<p:column headerText="#{msgsCore['manageProduto.field.quantidadeEstoque']}">
-						<h:outputText value="#{entity.quantidadeEstoque}" />
 					</p:column>
 										
 							<f:facet name="footer">

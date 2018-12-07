@@ -13,6 +13,11 @@
     	<artifactId>admin-template</artifactId>
     	<version>1.0.0-RC18</version>
 	</dependency>
+	<dependency> <groupId>org.apache.jena</groupId>
+ 		<artifactId>apache-jena-libs</artifactId>
+ 		<type>pom</type>
+ 		<version>3.3.0</version>
+ 	</dependency>
 	<dependency>
     	<groupId>br.ufes.inf.nemo</groupId>
     	<artifactId>jbutler-wp</artifactId>

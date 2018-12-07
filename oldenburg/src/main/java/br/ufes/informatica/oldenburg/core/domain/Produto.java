@@ -7,6 +7,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.persistence.Lob;
 
 import br.ufes.inf.nemo.jbutler.ejb.persistence.PersistentObjectSupport;
 
@@ -14,29 +15,32 @@ import br.ufes.inf.nemo.jbutler.ejb.persistence.PersistentObjectSupport;
 public class Produto extends PersistentObjectSupport implements Comparable<Produto> {
 	private static final long serialVersionUID = 1L;
 	
-	@Size(max = 100)
+	@Lob
 	private String name;
 	
-	@Size(max = 100)
+	@Lob
 	private String classificacaoIndicativa;
 	
-	@Size(max = 100)
+	@Lob
 	private String plataforma;
 	
-	@Size(max = 100)
+	@Lob
 	private String genero;
 	
-	@Size(max = 100)
+	@Lob
 	private String audio;
 	
-	@Size(max = 100)
+	@Lob
 	private String legendas;
 	
-	@Size(max = 100)
+	@Lob
 	private String multiplayer;
 	
-	@Size(max = 100)
+	@Lob
 	private String quantidadeEstoque;
+	
+	@Lob
+	private String resumo;
 
 	public String getName() {
 		return name;
@@ -102,6 +106,15 @@ public class Produto extends PersistentObjectSupport implements Comparable<Produ
 		this.quantidadeEstoque = quantidadeEstoque;
 	}
 	
+	
+	public String getResumo() {
+		return resumo;
+	}
+
+	public void setResumo(String resumo) {
+		this.resumo = resumo;
+	}
+
 	@Override
 	public int compareTo(Produto o) {
 		return 1;

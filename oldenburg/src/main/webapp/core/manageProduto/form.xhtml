@@ -26,9 +26,19 @@
 
 <ui:define name="body">
 	<h:form id="entitiesForm">
+	
+		
 		<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
 			<p:outputLabel for="nameField" value="#{msgsCore['manageProduto.field.name']} " />
-			<p:inputText id="nameField" value="#{manageProdutoController.selectedEntity.name}" style="width: 100%;" />
+			<p:inputText id="nameField" value="#{manageProdutoController.selectedEntity.name}"  style="width: 100%;">
+				<f:ajax event="blur" listener="#{manageProdutoController.sugestaoResumo()}" execute="@this" render="resumoField" />
+			
+			</p:inputText>
+		
+		
+			<p:outputLabel for="resumoField" value="Resumo " />
+			<p:inputTextarea id="resumoField" value="#{manageProdutoController.selectedEntity.resumo}" style="width: 100%;">
+			</p:inputTextarea>
 		</p:panelGrid>
 		<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
 			<p:outputLabel for="classificacaoIndicativaField" value="#{msgsCore['manageProduto.field.classificacaoIndicativa']} " />
@@ -51,13 +61,10 @@
 			<p:inputText id="legendasField" value="#{manageProdutoController.selectedEntity.legendas}" style="width: 100%;" />
 		</p:panelGrid>
 		<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
-			<p:outputLabel for="multiplayerField" value="#{msgsCore['manageProduto.field.multiplayer']} " />
+			<p:outputLabel for="multiplayerField" value="Modo" />
 			<p:inputText id="multiplayerField" value="#{manageProdutoController.selectedEntity.multiplayer}" style="width: 100%;" />
 		</p:panelGrid>
-		<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
-			<p:outputLabel for="quantidadeEstoqueField" value="#{msgsCore['manageProduto.field.quantidadeEstoque']} " />
-			<p:inputText id="quantidadeEstoqueField" value="#{manageProdutoController.selectedEntity.quantidadeEstoque}" style="width: 100%;" />
-		</p:panelGrid>
+
 		<p:commandButton id="cancelButton" value="#{msgs['jbutler.crud.button.cancel']}" icon="fa fa-close"
 			action="#{manageProdutoController.list}" immediate="true" rendered="#{! manageProdutoController.readOnly}" />
 		<p:commandButton id="saveButton" value="#{msgs['jbutler.crud.button.save']}" icon="fa fa-save" action="#{manageProdutoController.save}"
